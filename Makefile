@@ -6,7 +6,7 @@ run:
 		cp .env .env.example; \
 	fi
 	@docker-compose up -d
-	@echo "Service is running on http://localhost:8080"
+	@echo "Service is running on http://localhost:8080/login"
 
 .PHONY: install
 install:

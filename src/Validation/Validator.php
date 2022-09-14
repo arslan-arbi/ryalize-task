@@ -6,7 +6,6 @@ namespace  App\Validation;
 
 use Respect\Validation\Exceptions\NestedValidationException;
 use Psr\Http\Message\RequestInterface as Request;
-use App\Requests\RequestHandler;
 use Respect\Validation\Validator as v;
 
 /**
@@ -14,11 +13,6 @@ use Respect\Validation\Validator as v;
  */
 class Validator
 {
-
-    /**
-     * @var RequestHandler
-     */
-    protected RequestHandler $requestHandler;
 
     /**
      * @var array
@@ -32,16 +26,8 @@ class Validator
      * 
      * @return Validator
      */
-    public function validate(Request $request, array $rules): Validator
+    public function validate(array $payload, array $rules): Validator
     {
-        $payload = array();
-        $method = $request->getMethod();
-        if($method == 'POST') {
-            $payload = $request->getParsedBody();            
-        } else if($method == 'GET') {
-            $payload = $request->getQueryParams();
-        }
-
         foreach ($rules as $field => $value) {
             try {
                 $value->setName(ucfirst($field))->assert(isset($payload[$field]) ? $payload[$field] : null);

@@ -5,9 +5,12 @@
 - This application is fully dockerized.
 - Dockerfile & Docker-compose setup with PHP8.1 and MySQL 8.
 - After the image is started the app will run on port 8080 on localhost. You can try the using the following
-  endpoint:
-  - http://localhost:8080/api/
-  
+  url:
+  - http://localhost:8080/login/
+
+- As it is dockerized application so phpmyadmin link is:
+  - http://localhost:8082/
+
 - The default database is called `database` and the username and password are `root` and `root` respectively.
 - Makefile with some basic commands
 
@@ -15,7 +18,7 @@
 
 - create `.env` file if not already exists and paste .env.example content in it.
 
-## Installation
+## Installation steps with Docker
 
 Step 1:
 
@@ -51,6 +54,16 @@ Step 2:
 ## Description
 
 This application is basically build on PHP 8.1 Slim Framework 4.0:
+
+**Currently, Login Page and its functionality is working now**
+
+## Credentials
+
+
+```
+  email: arslan@gmail.com
+  password: 123456
+```
 
 **Created RESTAPIs for user authentication and user crud operations.**
 

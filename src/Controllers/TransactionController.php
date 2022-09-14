@@ -48,7 +48,7 @@ class TransactionController
      */
     public function getTransections(Request $request, Response $response): Response
     {
-        $this->validator->validate($request, [
+        $this->validator->validate($request->getQueryParams(), [
             "startdate" => v::notEmpty()->date(),
             "enddate" => v::notEmpty()->date(),
             "limit" => v::notEmpty()->number(),

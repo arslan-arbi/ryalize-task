@@ -48,7 +48,7 @@ class AuthController
      */
     public function Register(Request $request, Response $response): Response
     {
-        $this->validator->validate($request, [
+        $this->validator->validate($request->getParsedBody(), [
             "name" => v::notEmpty(),
             "email" => v::notEmpty()->email(),
             "password" => v::notEmpty(),
@@ -77,7 +77,7 @@ class AuthController
     public function Login(Request $request, Response $response): Response
     {
 
-        $this->validator->validate($request, [
+        $this->validator->validate($request->getParsedBody(), [
             "email" => v::notEmpty()->email(),
             "password" => v::notEmpty()
         ]);

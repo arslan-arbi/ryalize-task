@@ -3,7 +3,6 @@ require_once __DIR__  .'/../vendor/autoload.php';
 
 use DI\Container;
 use DI\Bridge\Slim\Bridge as SlimAppFactory;
-
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
@@ -29,21 +28,5 @@ $middleware($app);
 $routes = require_once  __DIR__ .'/routes.php';
 
 $routes($app);
-
-$containerObj = $app->getContainer();
-
-
-$containerObj->view = function ($containerObj) {
-    $view = new \Slim\Views\Twig('../views', [
-        'cache' => 'path/to/cache'
-    ]);
-
-    // Instantiate and add Slim specific extension
-    $router = $containerObj->get('router');
-    $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
-    $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
-
-    return $view;
-};
 
 $app->run();

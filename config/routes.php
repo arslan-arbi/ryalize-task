@@ -1,13 +1,13 @@
 <?php
 
 use Slim\App;
+use Slim\Views\Twig;
 
 return function (App $app)
 {
-
-    $app->get('/docs', function ($request, $response) {
-        $view = Twig::fromRequest($request);
-        return $view->render($response, 'docs.html');
+    $app->get('/login', function ($request, $response) {
+        $view = Twig::fromRequest($request); 
+        return $view->render($response, 'login.twig');
     });
     
     $app->group("/api", function($app)

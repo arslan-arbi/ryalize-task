@@ -1,8 +1,5 @@
 <?php
 use Slim\App;
-use App\Requests\RequestHandler;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Server\RequestHandlerInterface as RequestHandlerInterface;
 
 return function (App $app)
 {
@@ -25,9 +22,5 @@ return function (App $app)
       ])
   );
 
-  $app->add(function (Request $request, RequestHandlerInterface $handler) {
-    RequestHandler::setParams($request);
-    return $handler->handle($request);
-  });
   $app->addErrorMiddleware(true,true,true);
 };
